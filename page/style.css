@@ -1,0 +1,90 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#mainCont{
+    width: 100%;
+    /* height: 100%; */
+    height: 50%;
+    background-color: white;
+}
+
+.popUp{
+    width: 100%;
+    height: 100%;
+    background: rgba(44, 34, 3, 0.9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 10% 80% 10%;
+    grid-template-areas: 
+    ". header ."
+    ". content ."
+    ". . ."
+}
+
+.actual_content{
+    background-color: azure;
+    grid-area: content;
+}
+
+.content_header{
+    background-color: aqua;
+    grid-area: header;
+}
+
+.message_container{
+    height: 30%;
+    width: 40%;
+    background-color: orange;
+}
+
+nav{
+    background-color: antiquewhite;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+}
+
+#main_navbar > li{
+    display: inline-block;
+    margin: 20px;
+    
+}
+
+#main_navbar > li:hover{
+    background-color: azure!important;
+}
+
+#main_navbar > li:nth-child(odd) {
+    background-color: red;
+}
+footer{
+    position: relative;
+    bottom: 0;
+}
+
+#dropdown{
+    display: none;
+}
+
+.show_dropdown{
+    display: flex;
+}
