@@ -3,12 +3,28 @@ html, body{
     padding: 0;
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
+
+header{
+    width: 100%;
+    height: 100px;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    background-color: lightblue;
+    width: 100%;
+    text-align: center;
+    height: 100px;
+} 
+
 
 #mainCont{
     width: 100%;
     /* height: 100%; */
-    height: 50%;
+    flex: auto;
     background-color: white;
 }
 
@@ -73,13 +89,6 @@ ul{
     background-color: azure!important;
 }
 
-#main_navbar > li:nth-child(odd) {
-    background-color: red;
-}
-footer{
-    position: relative;
-    bottom: 0;
-}
 
 #dropdown{
     display: none;
@@ -87,4 +96,16 @@ footer{
 
 .show_dropdown{
     display: flex;
+}
+.maquee{
+    width: 50%;
+}
+.maquee > div{
+    width: 40%;
+    animation: example1 10s linear infinite
+}
+
+@keyframes example1{
+    0%   { -webkit-transform: translateX(100%); }
+    100% { -webkit-transform: translateX(-100%); }
 }
