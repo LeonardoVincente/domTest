@@ -2,7 +2,7 @@
 function init(){
     setTimeout( ()=>{
         // document.getElementById('mainCont').appendChild(popup());
-        document.getElementById('dropdown').classList.add("show_dropdown");;
+        // document.getElementById('dropdown').classList.add("show_dropdown");;
     }, 3000);    
 }
 
