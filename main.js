@@ -70,7 +70,27 @@ function init() {
     console.log("Init");
     document.getElementById("asd").addEventListener("click", throttle(test, 3000));
     document.getElementById("dw2").addEventListener("click", debouncer(ts, 3000));
-    console.log(parentTest());
+    testContext();
+}
+
+function testContext(){
+    let person = new Person();
+    person.getName("ss", "sdx"); 
+    let tContext = { name: 'Vcdas'};
+    person.getName.apply(tContext, ["Vdo", "ncxsd"]);
+    person.getName2();
+    person.getName2.apply(tContext);
+}
+
+function Person(){
+    this.name = "Leo";
+    this.getName = function(lastName, ls){
+        console.log("My name is "+ this.name + " and last name " + lastName + " ls " + ls);
+    }
+}
+
+Person.prototype.getName2 = function(){
+    console.log("Hi my name is " + this.name);
 }
 
 window.onload = init;
