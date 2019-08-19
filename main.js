@@ -11,7 +11,6 @@ function throttle(callback, limit) {
     }
 }
 
-
 function debouncer(callback, time) {
     var timeout;
     return function () {
@@ -69,8 +68,108 @@ function parentTest() {
 function init() {
     console.log("Init");
     document.getElementById("asd").addEventListener("click", throttle(test, 3000));
-    document.getElementById("dw2").addEventListener("click", debouncer(ts, 3000));
-    testContext();
+    document.getElementById("dw2").addEventListener("click", debouncer2(ts, 3000));
+    // testContext();
+    // testMergesort();
+    testBinarysearch();
+}
+
+function testMergesort(){
+    let testInput = [3,1,5,2,7,8,8];
+    let sorted = mergeSort(testInput);
+    console.log("Sorted");
+    console.log(sorted);
+}
+
+function binarySearch(input, value){
+    let left =0;
+    let right = input.length -1;
+    let middle = Math.floor((right + left) / 2);
+    // console.log(middle);
+    while(left  <= right){
+        if(input[middle] === value){
+            return middle;
+        }
+        if(input[middle] < value ){
+            left = middle + 1;
+        }else{
+            right = middle -1;
+        }
+        middle = Math.floor((right + left) / 2);
+    }
+    console.log(left, right);
+    return -1;
+}
+
+function testBinarysearch(){
+    let testInput = [1,2,3,5,6,7];
+    let indexOfValue = binarySearch(testInput, 7);
+    console.log(indexOfValue);
+}
+
+function mergeSort(input){
+    let mid = Math.floor(input.length/2);
+    let fH = input.slice(0, mid);
+    let sH = input.slice(mid);
+    // console.log("fH " , fH);
+    if(fH.length > 1 || sH.length > 1){
+        fH = mergeSort(fH);
+        sH = mergeSort(sH);
+    }
+    // console.log("First Half ", fH);
+    // console.log("Second half ", sH);
+    let merge = [];
+    let fI = 0;
+    let sI = 0;
+
+    console.log("fH " , fH);
+    console.log("sH " , sH);
+    while(fI < fH.length && sI < sH.length){
+        if(fH[fI] < sH[sI]){
+            merge.push(fH[fI]);
+            fI++;
+        }else{
+            merge.push(sH[sI]);
+            sI++;
+        }
+    }
+    console.log("MErged ", merge)
+    if(fI < fH.length){
+        merge.concat(fH.slice(fI));
+    }
+
+
+    if(sI < sH.length){
+        console.log("SIlec ", sH.slice(sI));
+        merge = merge.concat(sH.slice(sI));
+    }
+    console.log("MErged 2", merge);
+    // console.log("Merged " , merge);
+    return merge;
+}
+
+function debouncer2(func, time){
+    let timeout;
+    return function(){
+        let context = this, args = arguments;
+        clearTimeout(timeout);
+        timeout = setTimeout(()=>{func.apply(context, args)}, time);
+    }
+}
+
+function throttler2(func, time){
+    let wait;
+    return function(){
+        let context = this;
+        let args = arguments;
+        if(!wait){
+            wait = true;
+            setTimeout( ()=>{
+                wait = false;
+            }, time);
+            func.apply(context, args);
+        }
+    }
 }
 
 function testContext(){
