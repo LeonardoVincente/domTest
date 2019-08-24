@@ -23,6 +23,18 @@ class Chrono{
             }, 100);
     }
 
+    pause = function(){
+        clearInterval(this.timeInterval);
+    }
+
+    stop = function(){
+        this.pause();
+        currentTme = 0;
+        chron.observers.forEach( observer =>{
+            observer(chron.currentTme);
+        });
+    }
+
     subscribe =function(observer){
         this.observers.push(observer);
     }
