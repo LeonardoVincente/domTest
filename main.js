@@ -16,20 +16,20 @@ function debouncer(callback, time) {
     return function () {
         var context = this;
         var args = arguments;
-        var later = function () {
-            callback.apply(context, args);
-        }
+
         clearInterval(timeout);
-        timeout = setTimeout(later, time);
+        timeout = setTimeout( ()=>{
+            callback.apply(this, args);
+        }, time);
     }
 }
 
 function test() {
-    console.log("Test");
+    console.log("Testo");
 }
 
-function ts() {
-    console.log("Debounc man");
+function ts(abc) {
+    console.log("Debounc man2 " + abc);
 }
 
 function getCommonParent(el1, el2) {
@@ -151,9 +151,11 @@ function mergeSort(input){
 function debouncer2(func, time){
     let timeout;
     return function(){
-        let context = this, args = arguments;
+         args = arguments;
         clearTimeout(timeout);
-        timeout = setTimeout(()=>{func.apply(context, args)}, time);
+        timeout = setTimeout(()=>{
+            func.apply(this, args)
+        }, time);
     }
 }
 
